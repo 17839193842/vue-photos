@@ -9,39 +9,22 @@
 		        <div class="menu-title">Guoya & YY</div>
 		      </div>
 		      <div class="menu-ul">
-		        <div>
-		          <router-link class="icon-quanbu iconfont item border-1px" to="/HelloWorld">
+		        <div v-for="(menu,index) in menus" @click="updateHeader(menu)" :key="index">
+		          <router-link class="icon-quanbu iconfont item border-1px" to="/city">
 		            <div class="menu-icon">
 		              <i class="iconfont icon-welfare"></i>
 		            </div>
-		            <span class="menu-text">菜单一</span>
-		         
-		          </router-link>
-		        </div>
-		        <!--菜单二-->
-		        <div>
-		          <router-link class="icon-quanbu iconfont item border-1px clearfix" to="/HelloWorld">
-		            <div class="menu-icon">
-		              <i class="iconfont icon-ios"></i>
+		            <span class="menu-text">{{menu}}</span>
+		             <div class="menu-new" v-show="menu=='旅游日记'">
+		              <span>{{citys}}</span>
 		            </div>
-		            <span class="menu-text">菜单二</span>
-		            <div class="menu-new">
-		              <span>5</span>
+		            <div class="menu-new" v-show="menu=='动物世界'">
+		              <span>{{animals}}</span>
 		            </div>
 		          </router-link>
 		        </div>
-		        <!--菜单三-->
-		        <div>
-		          <router-link class="icon-quanbu iconfont item border-1px clearfix" to="/HelloWorld">
-		            <div class="menu-icon">
-		              <i class="iconfont icon-html5"></i>
-		            </div>
-		            <span class="menu-text">菜单三</span>
-		            <div class="menu-new">
-		              <span>5</span>
-		            </div>
-		          </router-link>
-		        </div>
+		      
+		      
 		
 		      </div>
 		    </div>
@@ -49,8 +32,9 @@
 </template>
 
 <script>
+	import {mapState} from 'vuex'
 	export default {
-	  name: 'leftMenu',
+	  name: 'v-menu',
 	  props:{
 	  	show:{
 	  		type:Boolean
@@ -58,15 +42,24 @@
 	  },
       data() {
         return {
-          
+          menus:['旅游日记', '可爱卡通', '植物', '动物世界', '明星网红'],
+
         };
       },
+      computed:{
+      	...mapState([
+      		'citys','animals'
+      	])
+      },
       methods: {
-       
+       updateHeader(title) {
+          this.$store.commit('updateTitle', title);
+          this.$store.commit('updateShow');
+        }
       }
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	@import "menu.css";
 </style>

@@ -46,6 +46,9 @@
   	overflow: hidden;
   	padding: 0;
   }
+  .menu-ul>div:hover{
+  	cursor:pointer;
+  }
   .clearfix:after{
   	content:"";
   	display:table;
