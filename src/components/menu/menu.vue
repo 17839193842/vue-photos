@@ -9,16 +9,16 @@
 		        <div class="menu-title">Guoya & YY</div>
 		      </div>
 		      <div class="menu-ul">
-		        <div v-for="(menu,index) in menus" @click="updateHeader(menu)" :key="index">
-		          <router-link class="icon-quanbu iconfont item border-1px" to="/city">
+		        <div v-for="(menu,index) in menus" @click="updateHeader(menu.name)">
+		          <router-link class="icon-quanbu iconfont item border-1px" :to="menu.type">
 		            <div class="menu-icon">
-		              <i class="iconfont icon-welfare"></i>
+		              <i class="iconfont" :class="'icon-'+ menu.type"></i>
 		            </div>
-		            <span class="menu-text">{{menu}}</span>
-		             <div class="menu-new" v-show="menu=='旅游日记'">
+		            <span class="menu-text">{{menu.name}}</span>
+		             <div class="menu-new" v-show="menu.name=='旅游日记'">
 		              <span>{{citys}}</span>
 		            </div>
-		            <div class="menu-new" v-show="menu=='动物世界'">
+		            <div class="menu-new" v-show="menu.name=='动物世界'">
 		              <span>{{animals}}</span>
 		            </div>
 		          </router-link>
@@ -42,7 +42,14 @@
 	  },
       data() {
         return {
-          menus:['旅游日记', '可爱卡通', '植物', '动物世界', '明星网红'],
+        	menus:[
+        	  {name:'旅游日记',type:'travel'},
+        	   {name:'可爱卡通',type:'cartoon'},
+        	    {name:'植物',type:'plant'},
+        	     {name:'动物世界',type:'animal'},
+        	      {name:'明星网红',type:'persons'},
+        	]
+//        menus:['旅游日记', '可爱卡通', '植物', '动物世界', '明星网红'],
 
         };
       },

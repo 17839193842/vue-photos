@@ -90,7 +90,13 @@
   	vertical-align: top;
   	text-align:center;
   }
-  
+  .item.router-link-active{
+  	color: #01aef3;
+  }
+  .item.router-link-active .menu-icon {
+    background-color: #01aef3;
+    color:#fff;
+}
   .menu-icon .iconfont {
   	color:#999999;
   line-height:30px;

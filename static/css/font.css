@@ -40,3 +40,6 @@
 
 .icon-sousuo_sousuo:before { content: "\e67a"; }
 
+.icon-airplane:before {
+  content: "\e9af";
+}

@@ -6,6 +6,7 @@
 				<swiper-slide v-for="(item, index) in commodity" data-index="index" :key="index" class="item">
 					<img class='swiImg' :src='item' />
 				</swiper-slide>
+				<div class="swiper-pagination" slot="pagination"></div>
 			</swiper>
 			<span class='swiText' v-if='commodity'>{{imgIndex}}/{{commodity.length}}</span>
 		</div>
@@ -14,7 +15,14 @@
 </template>
 
 <script>
+	const TAB_NAME = ['今天', '昨天', '前天', '三天前', '四天前'];
+	 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 	export default {
+		name: 'v-travel',
+	    components: {
+	      swiper,
+	      swiperSlide
+	    },
 		data() {
 			const that = this;
 			return {
@@ -25,7 +33,9 @@
 					
 				],
 				imgIndex: 1,
+		       TAB_NAME:[],
 				swiperOption: {
+					
 					//是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
 					notNextTick: true,
 					//循环
@@ -51,13 +61,17 @@
 						},
 
 					},
-				//分页器设置 
+//				分页器设置 
 					pagination:{
 						el: ".swiper-pagination",
 						clickable: true,
-						type: "bullets"
+						type: "bullets",
 
 					}
+                  
+
+
+			          
 				}
 			}
 
@@ -77,6 +91,8 @@
 
 	}
 </script>
+
+	
 <style>
 	@import "swiper/dist/css/swiper.css";
 
@@ -109,13 +125,22 @@
   }
 
   .swiper-pagination{
+  	width: 100%;
     top:0;
     height:50px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width:100%;
+    background:#eee;
   }
+ .swiper-pagination-bullet{
+ 	display:block;
+ 	flex:1;
+ 	height:50px;
+ 	border-radius:inherit;
+ 	line-height:50px;
+ }
    img{
     width: 100%;
     }

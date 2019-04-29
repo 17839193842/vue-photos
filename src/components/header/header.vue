@@ -5,11 +5,11 @@
 		 	<header class="header" :class="{'show':show}" @click="isShow">
 		      <header class="bar bar-nav">
 		        <div class="pull-left">
-		          <span class="iconfont icon-fenlei"></span>
+		          <span class="iconfont icon-39"></span>
 		        </div>
 		        <div class="title">{{headerTitle}}</div>
 		        <div class="pull-right">
-		          <span class="iconfont icon-sousuo_sousuo"></span>
+		          <span class="iconfont icon-search"></span>
 		        </div>
 		      </header>
 		  </header>
