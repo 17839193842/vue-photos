@@ -13,7 +13,7 @@
 	  name: 'App',
 	  //注册头部组件
 	  components: {
-      vHeader
+      'v-header':vHeader
     },
 	}
 </script>

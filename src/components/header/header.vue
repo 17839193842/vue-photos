@@ -14,7 +14,7 @@
 		      </header>
 		  </header>
 		 <!--引用子组件-->
-		 <v-menu></v-menu>
+		 <v-menu :show="show"></v-menu>
 		</div>
 </template>
 
@@ -25,7 +25,7 @@
       name: 'header',
       //注册子组件
       components: {
-	      vMenu
+	      'v-menu':vMenu
 	    },
       data() {
         return {

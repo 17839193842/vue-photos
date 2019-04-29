@@ -51,17 +51,18 @@
 <script>
 	export default {
 	  name: 'leftMenu',
+	  props:{
+	  	show:{
+	  		type:Boolean
+	  	}
+	  },
       data() {
         return {
-          show:false,
-          menuShow:false
+          
         };
       },
       methods: {
-        isShow(){
-        	this.menuShow=!this.menuShow;
-        	this.show=!this.show;
-        }
+       
       }
 	}
 </script>
