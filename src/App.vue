@@ -1,13 +1,21 @@
 <template>
   <div id="app">
+  	<!--引用头部组件-->
+  	<v-header></v-header>
     <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+	//引入头部组件
+	import vHeader from './components/header/header.vue'
+	export default {
+	  name: 'App',
+	  //注册头部组件
+	  components: {
+      vHeader
+    },
+	}
 </script>
 
 <style>
