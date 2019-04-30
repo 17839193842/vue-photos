@@ -10,16 +10,16 @@
       <div class="swiper-wrapper">
       	<!--猫-->
         <div class="swiper-slide">
-        	<img src="https://ps.ssl.qhmsg.com/bdr/556__/t01eb55988748d77055.jpg">
+        	1111
         </div>  
         <div class="swiper-slide">
-        	<img src="http://pic144.nipic.com/file/20171028/24368288_112050823502_2.jpg">
+        	2222
         </div>
         <div class="swiper-slide">
-        	<img src="http://img2.3lian.com/2014/c7/16/d/25.jpg">
+        	3333
         </div>
         <div class="swiper-slide">
-        	<img src="http://pic1.win4000.com/wallpaper/e/579730f795a32.jpg" alt="" />
+        	4444
         </div>
       </div>
     </div>
@@ -35,10 +35,10 @@ export default {
     data() {
       return {
         navList:[
-          {name:'北京'},
-          {name:'上海'},
-          {name:'杭州'},
-          {name:'乌镇'},
+          {name:'猫'},
+          {name:'大象'},
+          {name:'狗'},
+          {name:'兔子'},
         ],
         nowIndex:0,
       }
@@ -59,17 +59,17 @@ export default {
             that.nowIndex=that.mySwiper.activeIndex
           }
        });
-      
+      // this.getList();
     },
     methods: {
       tabClick(index){
         this.nowIndex = index
         this.mySwiper.slideTo(index,1000,false)
-      }
+      },
     },
-	created(id){
-	 
-	}
+  created(id){
+ 
+  }
 }
 </script>
 <style>
@@ -77,19 +77,9 @@ export default {
 		width:100%;
 	}
      .swiper-container {
-        height: 400px;
-        overflow:hidden;
-    }
-    .swiper-wrapper{
-    	width:100%;
-    	height:100%;
-    }
-    .swiper-slide{
-    	width:100%;
-    	height:100%;
-    }
-    .swiper-slide img{
-    	width:100%;
+        width: 500px;
+        height: 300px;
+        margin: 20px auto;
     }
 	.navlist{
 	  width:100%;

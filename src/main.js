@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import store from './vuex/store.js'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'  //引入样式
+import 'swiper/dist/css/swiper.css'   //swiper样式
+import vueWaterfallEasy from 'vue-waterfall-easy'
+
 Vue.use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false

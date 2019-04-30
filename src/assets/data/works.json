@@ -1,0 +1,54 @@
+[
+        {
+		    "id": 1,
+		    "src": "http://cued.xunlei.com/demos/publ/img/P_000.jpg",
+		    "numbering":"00001",
+		    "school":"双语小学",
+		    "student":"王伟",
+		    "praise":"22",
+		    "isDel": true,
+		    "delDesc": "图片不符合法律要求",
+		    "name": "美美的一天",
+		    "todayClk": false,
+		    "isPraise": false
+		  }, 
+		  {
+		    "id": 2,
+		    "src": "http://cued.xunlei.com/demos/publ/img/P_000.jpg",
+		    "numbering":"00002",
+		    "school":"双语小学22222",
+		    "student":"王伟",
+		    "praise":"23",
+		    "isDel": true,
+		    "delDesc": "图片不符合法律要求2222",
+		    "name": "美美的一天22222",
+		    "todayClk": false,
+		    "isPraise": false
+		  }, 
+		  {
+		    "id": 3,
+		    "src": "http://cued.xunlei.com/demos/publ/img/P_000.jpg",
+		    "numbering":"00003",
+		    "school":"双语小学23333",
+		    "student":"王伟",
+		    "praise":"23",
+		    "isDel": true,
+		    "delDesc": "图片不符合法律要求",
+		    "name": "美美的一天",
+		    "todayClk": false,
+		    "isPraise": false
+		  }, 
+		  {
+		    "id": 4,
+		    "src": "http://cued.xunlei.com/demos/publ/img/P_000.jpg",
+		    "numbering":"00004",
+		    "school":"双语小学44444",
+		    "student":"王伟",
+		    "praise":"23",
+		    "isDel": true,
+		    "delDesc": "图片不符合法律要求44444",
+		    "name": "美美的一天4444",
+		    "todayClk": false,
+		    "isPraise": false
+		  }
+]
