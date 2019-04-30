@@ -1,101 +1,151 @@
 <template>
-        <div class="zq-waterfall">
-            <div class="zq-waterfall-left">
-                <div class="box" v-for="(item,index) in itemsA" :key="index">
-                    <img :src="item.img" alt="">
-                </div>
-            </div>
-            <div class="zq-waterfall-right">
-                <div class="box" v-for="(item,index) in itemsB" :key="index">
-                    <img :src="item.img" alt="">
-                </div>
-            </div>
+  <div class="container">
+    <Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="#666" @handleClick="handleClick" ref="waterfall">
+      <template slot="item" scope="props">
+        <div class="card">
+          <div class="cover"><img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()"></div>
+          <div class="name">
+            <p>{{props.data.name}}</p>
+          </div>
         </div>
+      </template>
+    </Waterfall>
+    <button @click="addNewList">加一个</button>
+  </div>
 </template>
+
 <script>
-    export default {
-        data () {
-            return {
-                items: [
-                    { img:'./static/img/img.jpg'},
-                    { img:'./static/img/img.jpg'},
-                    { img:'https://ps.ssl.qhmsg.com/bdr/800__/t017843e759f2628d1f.jpg'},
-                    { img:'https://p0.ssl.qhimgs1.com/bdr/800__/t01d711248316728b20.jpg'},
-                    { img:'./static/img/img.jpg'},
-                    { img:'https://ps.ssl.qhmsg.com/bdr/752__/t01507473a62cf7cc58.jpg'},
-                    { img:'https://p0.ssl.qhimgs1.com/bdr/800__/t01d711248316728b20.jpg'},
-                    { img:'./static/img/img.jpg'},
-                    { img:'https://ps.ssl.qhmsg.com/bdr/752__/t01507473a62cf7cc58.jpg'},
-                    { img:'https://p0.ssl.qhimgs1.com/bdr/800__/t01d711248316728b20.jpg'},
-                ],
-                itemsA:[],
-                itemsB:[]
-            }
+import Waterfall from "./waterfall.vue";
+export default {
+  name: 'cartoon',
+  data () {
+    return {
+      list: [],
+    }
+  },
+  mounted() {
+    this.list = [
+       {
+          src: "http://p.ssl.qhimg.com/t01724724fc9caa94bf.jpg",
+          name: "场景一"
         },
-        computed: {},
-        mounted: function () {
-            this.getData()
+        {
+          src: "http://cs-op.douyucdn.cn/vod-index/2018/01/22/e21ebad16025f747b8bc96091042c900.jpg",
+          name: "场景二"
         },
-        methods: {
-            // 方法
-            getImg(url, callback){
-                var img = new Image();
-                img.src = url;
-                //如果图片被缓存，则直接返回缓存数据
-                if(img.compltet){
-                    /* callback(img.width, img.height); */
-                    callback(img.width, img.height, Number(img.height)/Number(img.width));
-                }else{
-                    //完全加载完毕的事件
-                    img.onload = function(){
-                        /* callback(img.width, img.height); */
-                        callback(img.width, img.height, Number(img.height)/Number(img.width));
-                    }
-                }
-            },
-            getData(){
-                // 加载完页面执行的函数
-                let boxA = document.getElementsByClassName('zq-waterfall-left')[0].clientHeight
-                let boxB = document.getElementsByClassName('zq-waterfall-right')[0].clientHeight
-                let that = this;
-                for(let val of this.items){
-                    that.getImg(val.img,function (w,h,r) {
-                        console.log(w)
-                        boxA = document.getElementsByClassName('zq-waterfall-left')[0].clientHeight
-                        boxB = document.getElementsByClassName('zq-waterfall-right')[0].clientHeight
-                        if(boxA>boxB){
-                            that.itemsB.push(val)
-                        }else{
-                            that.itemsA.push(val)
-                        }
-                    })
-                }
-            }
+        {
+          src: "http://p9.qhimg.com/t01447c917234911cf2.jpg",
+          name: "场景三"
         },
-        components: {
-            // 组件
+        {
+          src: "http://05.imgmini.eastday.com/mobile/20180212/20180212201510_0e27ec86ed59034f300f4e1d4aee8fd4_1.jpeg",
+          name: "场景四"
+        },
+        {
+          src: "http://img4.dwstatic.com/vhuyatv/1803/384953000949/1521011389431.jpg",
+          name: "场景五"
+        },
+        {
+          src: "http://img2.dwstatic.com/pc/1802/381422653510/1517467766942.jpg",
+          name: "场景六"
+        },
+        {
+          src: "http://i5.hexun.com/2018-02-01/192378386.jpg",
+          name: "场景七"
+        },
+        {
+          src: "http://i-3.yiwan.com/2018/1/29/46593a88-631b-4c58-865e-237bdff3f29a.jpg",
+          name: "场景八"
         }
+    ]
+  },
+  methods: {
+    addNewList() {
+      let list = [
+        {
+          src: "http://p.ssl.qhimg.com/t01724724fc9caa94bf.jpg",
+          name: "场景一"
+        },
+        {
+          src: "http://cs-op.douyucdn.cn/vod-index/2018/01/22/e21ebad16025f747b8bc96091042c900.jpg",
+          name: "场景二"
+        },
+        {
+          src: "http://p9.qhimg.com/t01447c917234911cf2.jpg",
+          name: "场景三"
+        },
+        {
+          src: "http://05.imgmini.eastday.com/mobile/20180212/20180212201510_0e27ec86ed59034f300f4e1d4aee8fd4_1.jpeg",
+          name: "场景四"
+        },
+        {
+          src: "http://img4.dwstatic.com/vhuyatv/1803/384953000949/1521011389431.jpg",
+          name: "场景五"
+        },
+        {
+          src: "http://img2.dwstatic.com/pc/1802/381422653510/1517467766942.jpg",
+          name: "场景六"
+        },
+        {
+          src: "http://i5.hexun.com/2018-02-01/192378386.jpg",
+          name: "场景七"
+        },
+        {
+          src: "http://i-3.yiwan.com/2018/1/29/46593a88-631b-4c58-865e-237bdff3f29a.jpg",
+          name: "场景八"
+        }
+      ];
+      this.list.push(...list)
+    },
+    handleClick(item) {
+      alert()
+      console.log(item)
     }
+  },
+  components: {
+    Waterfall
+  }
+}
 </script>
-<style scoped>
-	.zq-waterfall{
-		width:100%;
-	}
-    .box img {
-    	width: 100%;
-    	display: block;
-    	border-radius:3px;
-    	margin:5px 5px;
-    }
-    
-    .zq-waterfall-left {
-    	float: left;
-    	width: 45%;
-    }
-    
-    .zq-waterfall-right {
-    	float: left;
-    	width: 55%;
-    }
-    
+
+<style scoped="scoped">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		.cartoon {
+			font-family: Avenir, Helvetica, Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-align: center;
+			color: #2c3e50;
+		}
+		
+		.card {
+			border-radius: 5px;
+			overflow: hidden;
+			cursor: pointer;
+			background: #fff;
+			position: relative;
+			transition: .2s;
+			top: 0;
+		}
+		
+		.cover {
+			line-height: 0;
+			padding: 10px 10px 0;
+		}
+		
+		.cover img {
+			width: 100%;
+		}
+		
+		.name {
+			background: #f5f6fa;
+			color: #666;
+			font-weight: 600;
+			padding: 10px 20px;
+			font-size: 14px;
+		}
 </style>
