@@ -10,16 +10,56 @@
       <div class="swiper-wrapper">
       	<!--猫-->
         <div class="swiper-slide">
-        	<img src="https://ps.ssl.qhmsg.com/bdr/556__/t01eb55988748d77055.jpg">
+        	<Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="#666" @handleClick="handleClick" ref="waterfall">
+		      <template slot="item" scope="props">
+		        <div class="card">
+		          <div class="cover"><img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()"></div>
+		          <div class="name">
+		            <p>{{props.data.name}}</p>
+		          </div>
+		        </div>
+		      </template>
+		    </Waterfall>
+		    <button @click="addNewList" style="margin-top:10px;padding:6px;">加一个</button>
         </div>  
         <div class="swiper-slide">
-        	<img src="http://pic144.nipic.com/file/20171028/24368288_112050823502_2.jpg">
+        	<Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="#666" @handleClick="handleClick" ref="waterfall">
+		      <template slot="item" scope="props">
+		        <div class="card">
+		          <div class="cover"><img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()"></div>
+		          <div class="name">
+		            <p>{{props.data.name}}</p>
+		          </div>
+		        </div>
+		      </template>
+		    </Waterfall>
+		    <button @click="addNewList" style="margin-top:10px;padding:6px;">加一个</button>
         </div>
         <div class="swiper-slide">
-        	<img src="http://img2.3lian.com/2014/c7/16/d/25.jpg">
+        	<Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="#666" @handleClick="handleClick" ref="waterfall">
+		      <template slot="item" scope="props">
+		        <div class="card">
+		          <div class="cover"><img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()"></div>
+		          <div class="name">
+		            <p>{{props.data.name}}</p>
+		          </div>
+		        </div>
+		      </template>
+		    </Waterfall>
+		    <button @click="addNewList" style="margin-top:10px;padding:6px;">加一个</button>
         </div>
         <div class="swiper-slide">
-        	<img src="http://pic1.win4000.com/wallpaper/e/579730f795a32.jpg" alt="" />
+        	<Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="#666" @handleClick="handleClick" ref="waterfall">
+		      <template slot="item" scope="props">
+		        <div class="card">
+		          <div class="cover"><img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()"></div>
+		          <div class="name">
+		            <p>{{props.data.name}}</p>
+		          </div>
+		        </div>
+		      </template>
+		    </Waterfall>
+		    <button @click="addNewList" style="margin-top:10px;padding:6px;">加一个</button>
         </div>
       </div>
     </div>
@@ -29,6 +69,7 @@
 </template>
 
 <script>
+import Waterfall from "../../components/waterfall.vue";
 import Swiper from 'swiper';
 export default {
     name: "swiper",
@@ -41,9 +82,9 @@ export default {
           {name:'乌镇'},
         ],
         nowIndex:0,
-      }
-    },
-    components:{
+        list: [],
+      };
+       
     },
     mounted() {
       var that=this
@@ -59,17 +100,62 @@ export default {
             that.nowIndex=that.mySwiper.activeIndex
           }
        });
+       this.list = [
+       {
+          src: "http://p.ssl.qhimg.com/t01724724fc9caa94bf.jpg",
+          name: "场景一"
+        },
+        {
+          src: "http://cs-op.douyucdn.cn/vod-index/2018/01/22/e21ebad16025f747b8bc96091042c900.jpg",
+          name: "场景二"
+        },
+        {
+          src: "http://p9.qhimg.com/t01447c917234911cf2.jpg",
+          name: "场景三"
+        },
+        {
+          src: "http://05.imgmini.eastday.com/mobile/20180212/20180212201510_0e27ec86ed59034f300f4e1d4aee8fd4_1.jpeg",
+          name: "场景四"
+        },
+        {
+          src: "http://img4.dwstatic.com/vhuyatv/1803/384953000949/1521011389431.jpg",
+          name: "场景五"
+        },
+        {
+          src: "http://img2.dwstatic.com/pc/1802/381422653510/1517467766942.jpg",
+          name: "场景六"
+        },
+        {
+          src: "http://i5.hexun.com/2018-02-01/192378386.jpg",
+          name: "场景七"
+        },
+        {
+          src: "http://i-3.yiwan.com/2018/1/29/46593a88-631b-4c58-865e-237bdff3f29a.jpg",
+          name: "场景八"
+        }
+    ]
       
     },
     methods: {
       tabClick(index){
         this.nowIndex = index
         this.mySwiper.slideTo(index,1000,false)
-      }
+      },
+      addNewList() {
+      let list = this.list;
+      this.list.push(...list);
+      },
+       handleClick(item) {
+	      alert()
+	      console.log(item)
+	    }
     },
 	created(id){
 	 
-	}
+	},
+	components: {
+	    Waterfall
+	  }
 }
 </script>
 <style>
@@ -77,7 +163,7 @@ export default {
 		width:100%;
 	}
      .swiper-container {
-        height: 400px;
+        height:100%;
         overflow:hidden;
     }
     .swiper-wrapper{
@@ -118,13 +204,39 @@ export default {
 	}
 	.activeT{
 	  color:#00ba6b;
-	  padding-bottom: .3rem;
+	  padding-bottom: 10px;
 	  border-bottom: 2px solid #00ba6b;
 	}
 	.swiper_con{
 	  width:100%;
-	  margin-bottom:40px;
+	  margin-bottom:20px;
 	  position:relative;
 	} 
+	.card {
+			border-radius: 5px;
+			overflow: hidden;
+			cursor: pointer;
+			background: #fff;
+			position: relative;
+			transition: .2s;
+			top: 0;
+		}
+		
+		.cover {
+			line-height: 0;
+			padding: 10px 10px 0;
+		}
+		
+		.cover img {
+			width: 100%;
+		}
+		
+		.name {
+			background: #f5f6fa;
+			color: #666;
+			font-weight: 600;
+			padding: 10px 20px;
+			font-size: 14px;
+		}
 	
 </style>

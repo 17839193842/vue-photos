@@ -17,7 +17,7 @@
 <script>
 import Waterfall from "../../components/waterfall.vue";
 export default {
-  name: 'cartoon',
+  name: 'plant',
   data () {
     return {
       list: [],
